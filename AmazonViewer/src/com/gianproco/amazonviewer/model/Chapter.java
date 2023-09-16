@@ -5,7 +5,16 @@ import java.util.ArrayList;
 public class Chapter extends Movie{
 	private int id;
 	private int seasonNumber;
+	private Serie serie;
 	
+	public Serie getSerie() {
+		return serie;
+	}
+
+	public void setSerie(Serie serie) {
+		this.serie = serie;
+	}
+
 	public Chapter(String title, String genre, String creator, int duration, short year, int seasonNumber) {
 		super(title, genre, creator, duration, year);
 		this.seasonNumber = seasonNumber;
@@ -41,5 +50,34 @@ public class Chapter extends Movie{
 		
 		return chapters;
 	}
+	
+	@Override
+	public void watch() {
+		super.watch();
+		ArrayList<Chapter> chapters = getSerie().getChapters();
+		int chaptersWatchedCounter = 0;
+		
+		for (Chapter chapter : chapters) {
+			if(chapter.getIsWatched()) {
+				chaptersWatchedCounter++;
+			}
+		}
+		
+		if(chaptersWatchedCounter == chapters.size()) {
+			getSerie().setWatched(true);
+		}
+	}
 		
 }
+
+
+
+
+
+
+
+
+
+
+
+

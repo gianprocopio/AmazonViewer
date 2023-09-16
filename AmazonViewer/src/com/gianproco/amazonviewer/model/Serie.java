@@ -49,6 +49,11 @@ public class Serie extends Film{
 		
 		return series;
 	}
+	
+	@Override
+	public void watch() {
+		
+	}
 
 	
 	

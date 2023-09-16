@@ -32,6 +32,10 @@ public class Book extends Publication implements IWatchable{
 		}
 		return read;
 	}
+	
+	public boolean getIsRead() {
+		return read;
+	}
 
 	public void setRead(boolean read) {
 		this.read = read;
@@ -75,6 +79,20 @@ public class Book extends Publication implements IWatchable{
 			setTimeRead(0);
 		}
 		
+	}
+	
+	public void read() {
+		setRead(true);
+		Date dateStart = startWatching(new Date());
+		
+		for(int i = 0; i < 10000; i++) {
+			System.out.println("...........");
+		}
+		
+		stopWatching(dateStart, new Date());
+		System.out.println();
+		System.out.println("You've read: " + toString());
+		System.out.println("For: " + getTimeRead() + " milliseconds");
 	}
 	
 	public static ArrayList<Book> makeBooks(){

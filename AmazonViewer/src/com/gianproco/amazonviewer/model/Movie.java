@@ -12,12 +12,6 @@ public class Movie extends Film implements IWatchable{
 		setYear(year); // -> sobreescribimos el método constructor
 	}
 
-	public void showData() {
-		/*System.out.println("Title: " + title);
-		System.out.println("Genre: " + genre);
-		System.out.println("Year: " + year);*/
-	}
-	
 	public int getId() {
 		return id;
 	}
@@ -64,6 +58,26 @@ public class Movie extends Film implements IWatchable{
 		}
 		
 		return movies;
+	}
+
+	@Override
+	public void watch() {
+		//Marcar como vista
+		setWatched(true);
+		
+		//Empezar a verla
+		Date dateStart = startWatching(new Date());
+		
+		for (int i = 0; i < 100000; i++) {
+			System.out.println("........................");
+		}
+		
+		//Terminar de verla
+		stopWatching(dateStart, new Date());
+		System.out.println();
+		System.out.println("You've watched:\n " + toString());
+		System.out.println("\nFor: " + getTimeWatched() + " miliseconds");
+		
 	}
 	
 

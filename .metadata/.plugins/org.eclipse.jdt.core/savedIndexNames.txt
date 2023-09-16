@@ -1,3 +1,7 @@
 INDEX VERSION 1.134+C:\Users\gianp\JAVA\amazonviewer-platzi\AmazonViewer\.metadata\.plugins\org.eclipse.jdt.core
 2417640386.index
+3501714628.index
+1772746391.index
+2430571713.index
+523365190.index
 1865797976.index
