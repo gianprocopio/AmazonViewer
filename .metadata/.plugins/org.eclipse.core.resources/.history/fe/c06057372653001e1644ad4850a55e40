@@ -1,0 +1,8 @@
+package com.gianproco.amazonviewer.model;
+
+public class Serie {
+	private int id;
+	private int seasonQuantity;
+	private Chapter[] chapters;
+	
+	

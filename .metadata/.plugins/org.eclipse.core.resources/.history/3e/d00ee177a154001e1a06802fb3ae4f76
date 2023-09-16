@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * 
+ */
+module AmazonViewer {
+	requires AmazonViewer;
+}

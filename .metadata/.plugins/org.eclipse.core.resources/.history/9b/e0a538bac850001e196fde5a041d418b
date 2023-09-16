@@ -1,0 +1,10 @@
+package com.gianproco.holamundo;
+
+public class HolaMundo {
+
+	public static void main(String[] args) {
+		int[][] nombres = new int[2][3];
+		nombres = [[1,2,3],[4,5,6]];
+	}
+
+}

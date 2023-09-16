@@ -1,0 +1,74 @@
+package com.gianproco.amazonviewer.model;
+
+import java.util.Date;
+
+public class Book extends Publication implements IWatchable{
+	private int id;
+	private String isbn;
+	private boolean read;
+	private int timeRead;
+	
+	public Book(String title, Date editionDate, String editorial, String[] authors) {
+		super(title, editionDate, editorial);
+		setAuthors(authors);
+	}
+
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public boolean isRead() {
+		return read;
+	}
+
+	public void setRead(boolean read) {
+		this.read = read;
+	}
+
+	public int getTimeRead() {
+		return timeRead;
+	}
+
+	public void setTimeRead(int timeRead) {
+		this.timeRead = timeRead;
+	}
+
+	public int getId() {
+		return id;
+	}
+	
+	@Override
+	public String toString() {
+		String detailBook = "\n :: BOOK ::" + 
+				"\nTitle: " + getTitle() +
+				"\nEditorial: " + getEditorial() +
+				"\nEdition Date: " + getEditionDate();
+		
+		for(int i = 0; i < getAuthors().length; i++) {
+			detailBook += "\t" + getAuthors()[i];
+		}
+		return detailBook;
+	}
+	
+	@Override
+	public Date startWatching(Date dateStart) {
+		return dateStart;
+	}
+
+	@Override
+	public void stopWatching(Date dateStart, Date dateStop) {
+		if(dateStop.getMinutes() > dateStart.getMinutes()) {
+			setTimeRead(dateStop.getMinutes() - dateStart.getMinutes());
+		}else {
+			setTimeRead(0);
+		}
+		
+	}
+	
+	
+}

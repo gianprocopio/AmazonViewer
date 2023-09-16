@@ -1,0 +1,47 @@
+package com.gianproco.makereport;
+
+
+public class Report {
+	private String nameFile;
+	private String title;
+	private String content;
+	private String extension;
+	
+	
+	public String getExtension() {
+		return extension;
+	}
+	public void setExtension(String extension) {
+		this.extension = extension;
+	}
+	public String getNameFile() {
+		return nameFile;
+	}
+	public void setNameFile(String nameFile) {
+		this.nameFile = nameFile;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+	public void makeReport() {
+		if((getNameFile() != null) && (getTitle() != null) && (getContent() != null){
+			//Crear archivo
+			File reportFile = new File(getNameFile() + "." + getExtension());
+			
+		}else {
+			System.out.println("Enter all the file data");
+		}
+		}
+	
+	
+}

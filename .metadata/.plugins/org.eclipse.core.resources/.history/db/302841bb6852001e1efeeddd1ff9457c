@@ -1,0 +1,11 @@
+package com.gianproco.amazonviewer.model;
+
+public class Film {
+	private int id;
+	private String title;
+	private String genre;
+	private String creator;
+	private int duration;
+	private short year;
+	private boolean viewed;
+}

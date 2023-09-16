@@ -1,0 +1,36 @@
+package com.gianproco.holamundo;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		int exit = 0;
+		
+		do {
+			System.out.println("**WELCOME TO AMAZON VIEWER**");
+			System.out.println("");
+			System.out.println("Choose the number of the desired option");
+			System.out.println("1. Movies");
+			System.out.println("2. Series");
+			System.out.println("3. Books");
+			System.out.println("4. Newspapers");
+			System.out.println("0. Exit");
+		}while(exit != 0);
+		
+		switch(exit) {
+			case 1: System.out.println("1. Spiderman\n2. Batman\n3. Flash");
+				break;
+			case 2: System.out.println("1. Game of Thrones\n2. Stranger Things\n3. The Walking Dead");
+					break;
+			case 3: System.out.println("1. Nineteen Eighty-Four\n2. Romeo and Juliet\n3. Dracula");
+					break;	
+			case 4: System.out.println("1. The New York Times\n2. The BBC of London\n3. CNN");
+					break;
+			case 0: System.out.println("\nThanks for coming! See you soon!");
+					break;
+			default: System.out.println("Incorrect option");		
+		}
+
+	}
+
+}

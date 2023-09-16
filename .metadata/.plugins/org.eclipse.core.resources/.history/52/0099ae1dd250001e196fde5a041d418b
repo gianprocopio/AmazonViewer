@@ -1,0 +1,11 @@
+package com.gianproco.amazonviewer.model;
+
+public class Serie {
+	int id;
+	String title;
+	int duration;
+	short year;
+	boolean viewed;
+	int timeViewed;
+	int seasonNumber;
+}

@@ -1,0 +1,11 @@
+package com.gianproco.amazonviewer.model;
+
+public class Chapter {
+	private int id;
+	private String title;
+	private int duration;
+	private short year;
+	private boolean viewed;
+	private int timeViewed;
+	private int seasonNumber;
+}

@@ -1,0 +1,43 @@
+package com.gianproco.amazonviewer.model;
+
+public class Serie extends Film{
+	private int id;
+	private int seasonQuantity;
+	private ArrayList<Chapter> chapters;
+	
+		
+	public Serie(String title, String genre, String creator, int duration, int seasonQuantity) {
+		super(title, genre, creator, duration);
+		this.seasonQuantity = seasonQuantity;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public int getSeasonQuantity() {
+		return seasonQuantity;
+	}
+	public void setSeasonQuantity(int seasonQuantity) {
+		this.seasonQuantity = seasonQuantity;
+	}
+	public ArrayList<Chapter> getChapters() {
+		return chapters;
+	}
+	public void setChapters(Chapter[] chapters) {
+		this.chapters = chapters;
+	}
+	
+	@Override
+	public String toString() {
+		return "\n :: SERIE ::" + 
+				"\nTitle: " + getTitle() +
+				"\nGenre: " + getGenre() +
+				"\nYear: " + getYear() + 
+				"\nCreator: " + getCreator() +
+				"\nDuration: " + getDuration();
+	}
+
+	
+	
+}
+	

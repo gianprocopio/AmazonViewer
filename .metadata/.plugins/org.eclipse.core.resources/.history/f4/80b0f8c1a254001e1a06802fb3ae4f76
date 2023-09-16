@@ -1,0 +1,252 @@
+package com.gianproco.amazonviewer;
+
+import java.util.Date;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+import com.gianproco.amazonviewer.model.Book;
+import com.gianproco.amazonviewer.model.Chapter;
+import com.gianproco.amazonviewer.model.Movie;
+import com.gianproco.amazonviewer.model.Serie;
+import com.gianproco.makereport.Report;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+ 		showMenu();
+		
+	}
+
+	public static void showMenu() {
+		
+		int exit = 0;
+		
+		do {
+			System.out.println("**WELCOME TO AMAZON VIEWER**");
+			System.out.println("");
+			System.out.println("Choose the number of the desired option");
+			System.out.println("1. Movies");
+			System.out.println("2. Series");
+			System.out.println("3. Books");
+			System.out.println("4. Magazines");
+			System.out.println("5. Report TODAY");
+			System.out.println("6. Report");
+			System.out.println("0. Exit");
+			
+			Scanner sc = new Scanner(System.in);	
+			int response = Integer.valueOf(sc.nextLine());
+			
+			
+			switch(response) {
+				case 1: showMovies();break;
+				case 2: showSeries();break;
+				case 3: showBooks();break;	
+				case 4: showMagazines();break;
+				case 5: makeReport(new Date());break;
+				case 6: makeReport();break;
+				case 0: exit = 0;System.out.println("Thank you for coming! See you!");break;
+				default: System.out.println("Incorrect option\n");break;		
+			}
+					
+		}while(exit != 0);
+		
+}
+	static ArrayList<Movie> movies;
+	public static void showMovies() {
+		int exit = 1;
+		movies = Movie.makeMovies();
+		do {
+			System.out.println("");
+			System.out.println("::MOVIES::");
+			System.out.println("");
+			
+			for(int i = 0; i < movies.size(); i++) {
+				System.out.println(i + 1 + ". " + movies.get(i).getTitle() + " || Watched: " + movies.get(i).isWatched());
+			}
+			
+			System.out.println("0. Go back to Menu");
+			System.out.println();
+			
+			//Leer respuesta del usuario
+			Scanner sc = new Scanner(System.in);
+			int response = Integer.valueOf(sc.nextLine());
+			
+			if(response == 0) {
+				showMenu();
+			}
+			
+			if(response > 0) {
+				//Seleccionar película
+				Movie movieSelected = movies.get(response - 1);
+				
+				//Marcar como vista
+				movieSelected.setWatched(true);
+				
+				//Empezar a verla
+				Date dateStart = movieSelected.startWatching(new Date());
+				
+				for (int i = 0; i < 100000; i++) {
+					System.out.println("........................");
+				}
+				
+				//Terminar de verla
+				movieSelected.stopWatching(dateStart, new Date());
+				System.out.println();
+				System.out.println("You've watched:\n " + movieSelected);
+				System.out.println("\nFor: " + movieSelected.getTimeWatched() + " miliseconds");
+			}		
+			
+		}while(exit != 0);
+	}
+	
+	public static void showSeries() {
+		int exit = 1;
+		ArrayList<Serie> series = Serie.makeSeriesList();
+		do {
+			System.out.println("");
+			System.out.println("::SERIES::");
+			System.out.println("");
+			
+			for(int i = 0; i < series.size(); i++) {
+				System.out.println(i + 1 + ". " + series.get(i).getTitle() + " || Watched: " + series.get(i).isWatched());
+			}
+			
+			System.out.println("\n0. Go back to the Menu");
+			System.out.println();
+			
+			//Leer respuesta usuario
+			Scanner sc = new Scanner(System.in);
+			int response = Integer.valueOf(sc.nextLine());
+			
+			if(response == 0) {
+				showMenu();
+			}
+			
+			showChapters(series.get(response - 1).getChapters());
+			
+			
+		}while(exit != 0);
+	}
+
+	public static void showChapters(ArrayList<Chapter> chaptersSelected) {
+		int exit = 1;
+		do {
+			System.out.println("");
+			System.out.println("::CHAPTERS::");
+			System.out.println("");
+			
+			for(int i = 0; i < chaptersSelected.size(); i++) {
+				System.out.println(i + 1 + ". " + chaptersSelected.get(i).getTitle() + " Watched: " + chaptersSelected.get(i).isWatched());
+			}
+			
+			System.out.println("0. Go back to the Menu");
+			System.out.println();
+			
+			//Leer respuesta usuario
+			Scanner sc = new Scanner(System.in);
+			int response = Integer.valueOf(sc.nextLine());
+			
+			if(response == 0) {
+				showMenu();
+			}
+			
+			Chapter chapterSelected = chaptersSelected.get(response - 1);
+			chapterSelected.setWatched(true);
+			Date dateStart = chapterSelected.startWatching(new Date());
+			
+			for(int i = 0; i < 100000; i++) {
+				System.out.println("....................");
+			}
+			
+			//Termina de verlo
+			chapterSelected.stopWatching(dateStart, new Date());
+			System.out.println();
+			System.out.println("You've watched: " + chapterSelected);
+			System.out.println("For: " + chapterSelected.getTimeWatched() + " miliseconds");
+			
+		}while(exit != 0);
+	}
+	
+	public static void showBooks() {
+		int exit = 1;
+		ArrayList<Book> books = Book.makeBooks();
+		do {
+			System.out.println("");
+			System.out.println("::BOOKS::");
+			System.out.println("");
+			
+			for(int i = 0; i < books.size(); i++) {
+				System.out.println(i + 1 + ". " + books.get(i).getTitle() + " || Read: " + books.get(i).isRead());
+			}
+			
+			System.out.println("0. Go back to Menu");
+			System.out.println();
+			
+			
+			
+			Scanner sc = new Scanner(System.in);
+			int response = Integer.valueOf(sc.nextLine());
+			
+			if(response == 0) {
+				showMenu();
+			}
+			
+			Book bookSelected = books.get(response - 1);
+			
+			bookSelected.setRead(true);
+			
+			Date dateStart = bookSelected.startWatching(new Date());
+			
+			for (int i = 0; i < 100000; i++) {
+				System.out.println("........................");
+			}
+			
+			//Terminar de verla
+			bookSelected.stopWatching(dateStart, new Date());
+			System.out.println();
+			System.out.println("You've watched:\n " + bookSelected);
+			System.out.println("\nFor: " + bookSelected.getTimeRead() + " miliseconds");
+			
+		}while(exit != 0);
+	}
+
+	public static void showMagazines() {
+		int exit = 1;
+		do {
+			System.out.println("");
+			System.out.println("::MAGAZINES::");
+			System.out.println("");
+			
+			/*switch(response) {
+				case 
+			}*/
+		}while(exit != 0);
+	}
+	
+	public static void makeReport() {
+		Report report = new Report();
+		report.setNameFile("report");
+		report.setExtension("txt");
+		report.setTitle("::VISTOS::");
+		String contentReport = "";
+		
+		for (Movie movie : movies) {
+			if(movie.getIsWatched()) {
+				System.out.println(":::MOVIES WATCHED:::");
+				contentReport += movie.toString() + "\n\n";
+			}
+		}
+		report.setContent(contentReport);
+		report.makeReport();
+		
+		System.out.println("Report done.");
+	}
+	
+	public static void makeReport(Date date) {
+		
+	}
+	
+	
+	
+}
